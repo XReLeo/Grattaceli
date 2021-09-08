@@ -1,6 +1,8 @@
 //GAME
 
 const defaultList = [];
+const SolutionMatrix = [];
+let NotUsed = [];
 
 function FillCells() {
 
@@ -49,12 +51,36 @@ function FillCells() {
     SwapColumn(matrix);
     SwapRow(matrix);
 
+    for(let i = 0; i < N; i++){
+        SolutionMatrix[i] = [];
+    }
+
     for (let i = 0; i < N; i++) {
         for (let j = 0; j < N; j++) {
             grid[i][j].value = matrix[i][j];
+            SolutionMatrix[i][j] = matrix[i][j];
         }
     }
 
+    for (let i = 0; i < N; i++) {
+        for (let j = 0; j < N; j++) {
+                NotUsed.push(grid[i][j]);
+        }
+    }
+
+}
+
+function GiveHelp(){
+
+    let n1 = floor(random(NotUsed.length));
+
+    let cellToChange = NotUsed[n1];
+    Remove(NotUsed, NotUsed[n1]);
+    let i = cellToChange.i;
+    let j = cellToChange.j;
+
+    cellToChange.value = SolutionMatrix[i][j];
+    cellToChange.color = true;
 }
 
 const NumOfSwap = 5;

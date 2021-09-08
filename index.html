@@ -14,10 +14,10 @@
     <script src = "https://cdn.jsdelivr.net/gh/XReLeo/Grattaceli/GameCreation.js"></script>
     <script src = "https://cdn.jsdelivr.net/gh/XReLeo/Grattaceli/Interaction.js"></script>
 
-    <!-- <script src="./JSfiles/Clues.js"></script>
-    <script src="./JSfiles/Grid.js"></script>
-    <script src="./JSfiles/GameCreation.js"></script>
-    <script src="./JSfiles/Interaction.js"></script> -->
+    <!-- <script src="Clues.js"></script>
+    <script src="Grid.js"></script>
+    <script src="GameCreation.js"></script>
+    <script src="Interaction.js"></script> -->
 
 
 </head>
@@ -75,6 +75,17 @@
         document.querySelector('.newGame').addEventListener('click', () => {
 
             CreateNewGame();
+
+        });
+
+        var button_Help = createButton('Help');
+        button_Help.addClass('Help');
+        button_Help.position(10, cnvy);
+
+        document.querySelector('.Help').addEventListener('click', () => {
+
+            GiveHelp();
+            ShowGrid();
 
         });
 
