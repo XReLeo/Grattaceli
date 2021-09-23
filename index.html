@@ -82,10 +82,20 @@
         button_Help.addClass('Help');
         button_Help.position(10, cnvy);
 
-        document.querySelector('.Help').addEventListener('click', () => {
+        document.querySelector('.Help').addEventListener('click', async () => {
 
             GiveHelp();
             ShowGrid();
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: 'hello'
+            };
+
+            const res = await fetch('/', options);
 
         });
 
