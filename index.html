@@ -87,6 +87,34 @@
             GiveHelp();
             ShowGrid();
 
+            grid_for_json = {
+                grid : []
+            }
+            for (let i = 0; i < rows; i++) {
+                grid_for_json.grid.push([])
+                for (let j = 0; j < cols; j++) {
+                    cell = grid[i][j]
+                    new_cell = {
+                        i: cell.i,
+                        j: cell.j,
+                        value: cell.value,
+                        show: cell.show,
+                        color: cell.color
+                    }
+                    grid_for_json.grid[i].push(new_cell)
+                }
+            }
+
+            console.log(grid_for_json);
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(grid_for_json)
+            };
+
+            const res = await fetch('/LogicGames/Grattaceli/data', options);
         });
 
         background(back_color);
